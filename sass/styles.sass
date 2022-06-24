@@ -1,0 +1,145 @@
+@use 'variables' /*Para importar arquivos no sass usa use*/
+@use 'mixins' /*uso de mixins importado*/
+
+*
+  font-family: 'Josefin Sans' /*font que foi pega do google para uso*/
+  padding: 0 /*tirou todo o padding e margin do html padrão*/
+  margin: 0
+  box-sizing: border-box
+
+body
+  background-color: variables.$bg-color /*cor preta importada do arquivo*/
+  color: variables.$text-color
+
+  a /*a que esta dentro de body..*/
+    color: variables.$text-color /*feito de uma forma muito mais resumida que css padrão*/
+    text-decoration: none
+    transition: .4s /*.4segundos a transição*/
+
+  ul
+    list-style: none
+
+.header
+  display: flex /*esquerda para direita  e nao cima e baixo*/
+  justify-content: space-between /*espaçamento entre os outros separados seja div span oq for*/
+  @include mixins.container /*aplicar o mixins arquivo dentro do header, container dados do arquivo importados nessa parte*/
+
+  @include mixins.mobile
+    padding: 1.1rem //se a largura for mobile do mixins padding header fica nesse tamanho
+
+  &-brand // .header-brand, class="header-brand">Galleria</a titulo
+    color: variables.$primary-color
+    font-size: 3rem
+
+  &-navbar // .header-navbar
+
+    ul // a ul dentro de navbar
+      height: 100%
+      @include mixins.flex-center
+
+      @include mixins.mobile
+        display: none
+
+      li
+        margin: 0 1rem
+        text-transform: uppercase
+        font-size: .8rem
+
+        .active
+          color: variables.$secondary-color
+
+        a
+          &:hover //hover ao passar o mouse muda a cor
+            color: variables.$secondary-color
+
+  &-social-media
+
+    ul
+      @include mixins.flex-center
+      height: 100%
+
+      @include mixins.mobile
+        display: none /*remove em formato mobile os icones sociais*/
+
+      li
+        margin: 0 1rem
+
+        a
+
+          &:hover
+            color: variables.$primary-color
+
+
+.gallery
+  @include mixins.flex-center
+  @include mixins.container
+  flex-wrap: wrap /*para pular linhas espaços*/
+  justify-content: space-between /*espaçamento entre eles igual*/
+  padding: 0
+
+  @include mixins.mobile
+    flex-direction: column
+
+  &-card // .gallery-card
+    width: 31%
+    height: 400px
+    margin-bottom: 4%
+    @include mixins.flex-center
+    flex-direction: column
+    color: variables.$primary-color
+
+    @include mixins.mobile
+      width: 90%
+      margin-bottom: 6%
+
+    &-title
+      font-size: 2rem
+      font-weight: 300
+      margin-bottom: 1rem
+
+    &-btn
+      padding: .6rem 2rem /*Vertical e horizontal*/
+      border: 2px solid variables.$primary-color
+      color: variables.$primary-color
+      font-weight: 400
+      text-transform: uppercase
+      letter-spacing: 1px
+
+      &:hover /*ao passar o mouse no botão as mudanças hover*/
+        background-color: variables.$primary-color
+        color: variables.$bg-color
+
+  #card-1
+    @include mixins.bg-img('animais.jpg') /*adicionando essa imagem no style.sass principal importando mixins com suas configurações*/
+
+  #card-2
+    @include mixins.bg-img('arquitetura.jpg')
+
+  #card-3
+    @include mixins.bg-img('cidade.jpg')
+  
+  #card-4
+    @include mixins.bg-img('decoracao.jpg')
+
+  #card-5
+    @include mixins.bg-img('esportes.jpg')
+  
+  #card-6
+    @include mixins.bg-img('natureza.jpg')
+
+  #card-7
+    @include mixins.bg-img('paisagem.jpg')
+
+  #card-8
+    @include mixins.bg-img('pessoas.jpg')
+
+  #card-9
+    @include mixins.bg-img('refeicoes.jpg')
+
+footer
+  text-align: center
+  padding-bottom: 2rem
+
+  span
+    font-weight: bold
+    color: variables.$secondary-color /*coloca nos span cor secundaria do arquivo variables.sass importado com use*/

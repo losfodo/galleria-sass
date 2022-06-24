@@ -1,0 +1,7 @@
+* obviamente tem que ter o node instalado
+* npm install -g sass  : terminal comando para instalar o sass no projeto de forma global
+* baixar extensão do sass para ajudar a completar codigos scss
+* --watch sass/styles.sass:css/styles.css  : no terminal o --watch para olhar o arquivo e styles.sass o nome do arquivo gerar um outro arquivo css tendo o sass e css tbm para comparar
+
+<!---->
+/**/

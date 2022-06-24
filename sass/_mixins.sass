@@ -1,0 +1,28 @@
+@use 'variables'
+
+@mixin container
+  max-width: variables.$container-width
+  padding: 1.5rem 0
+  margin: 0 auto /*auto para centralizar o conteudo*/
+
+@mixin flex-center /*cria se varios mixim para usar no arquivo principal style.sass*/
+  display: flex
+  align-items: center
+  justify-content: center
+
+@mixin bg-img($img)
+  background-image: url('../img/#{$img}') /*colocar as imagens usando um mixin*/
+  background-size: 100% /*tamanho de 100 %*/
+  background-position: center /*centralizado*/
+  background-repeat: no-repeat /*para nao repetir a imagem importante*/
+  filter: grayscale(100%)/*coloca filtro na foto para ela ficar preto e branco*/
+  transition: .6s /*transição de 6 segundos*/
+
+  &:hover
+    background-size: 110%
+    filter: grayscale(0%) /*passando mouse remove cinza preto e branco e fica colorida a foto*/
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/#{$img}')/*colocar uma opacidade efeito*/
+
+@mixin mobile
+  @media(max-width: 425px)/*responsividade para android, se a largura for abaixo dessa*/
+    @content
